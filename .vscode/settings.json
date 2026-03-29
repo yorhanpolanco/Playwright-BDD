@@ -1,4 +1,10 @@
 {
+    "cucumber.glue": [
+        "src/test/steps/**/*.ts"
+    ],
+    "cucumber.features": [
+        "src/test/features/**/*.feature"
+    ],
     "workbench.editor.empty.hint": "hidden",
     "playwright.reuseBrowser": true,
     "playwright.showTrace": false,

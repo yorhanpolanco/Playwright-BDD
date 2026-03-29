@@ -10,7 +10,7 @@ class ApiService {
     this.apiSetting = new ApiSetting();
   }
 
-  async ejecutarRequest(dataJson: any, metodo: string, url: string, endpoint: string, headers: string, auth?: string, data?: any):Promise<any> {
+  async ejecutarRequest(dataJson: any, metodo: string, url: string, endpoint: string, headers: string, auth?: string, data?: any): Promise<any> {
     let headerSetting: Header;
     let urlApi;
     let endpointApi;
@@ -18,8 +18,8 @@ class ApiService {
     let authApi;
     let dataApi;
 
-    if(!metodo || !url || !endpoint){
-      const campos = await Utilidades.obtenerVariablesVacias({metodo,url,endpoint});
+    if (!metodo || !url || !endpoint) {
+      const campos = await Utilidades.obtenerVariablesVacias({ metodo, url, endpoint });
       throw new Error(`No se puede realizar el request porque no fue agregado el valor de ${campos.join(',')}`);
     }
 

@@ -7,8 +7,8 @@ const { Given, When, Then } = createBdd(test);
 
 let consultaRNC: consultaRNCPOM;
 
-Given('Usuario accede a la pagina de la DGII', async ({ page, browser }) => {
-  consultaRNC = new consultaRNCPOM(page, browser);
+Given('Usuario accede a la pagina de la DGII', async ({ page }) => {
+  consultaRNC = new consultaRNCPOM(page);
   await consultaRNC.goto();
 });
 

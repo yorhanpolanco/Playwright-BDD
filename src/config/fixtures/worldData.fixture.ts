@@ -33,10 +33,11 @@ export const worldDataFixture = {
 
             obtenerDataJson: (key?: string) => {
                 if (key) {
-                    if (internalDataJson[key]) {
+                    if (key in internalDataJson) {
                         return internalDataJson[key];
                     } else {
-                        Utilidades.agregarLineaAlLog(`${key.toUpperCase()} no existe en el archivo de data`, false);
+                        Utilidades.agregarLineaAlLog(`La llave '${key.toUpperCase()}' no existe en el archivo de data`, false);
+                        return undefined;
                     }
                 } else {
                     return JSON.stringify(internalDataJson);
