@@ -26,18 +26,30 @@ async function run() {
     const opts = parseArgs();
 
     // Inyectar contexto para que playwright.config.ts y otros modulos (como reportes) lo lean
-    if (opts.env) process.env.ENV = opts.env;
+    if (opts.env) { process.env.ENV = opts.env } else { process.env.ENV = 'dev' };
     if (opts.folder) process.env.FOLDER = opts.folder;
     if (opts.browser) process.env.BROWSER = opts.browser;
+    if (opts.tags) process.env.TAGS = opts.tags;
+    if (opts.workers) process.env.WORKERS = opts.workers;
+    if (opts.feature) process.env.FEATURE = opts.feature;
 
     if (!fs.existsSync('logs')) {
         fs.mkdirSync('logs');
     }
 
+    const sanitize = (value?: string) =>
+        value?.replace(/[^a-zA-Z0-9-_]/g, '');
+
     const fecha = dayjs().format('DD-MM-YYYY_HHmmss');
-    const browserStr = opts.browser || 'default';
-    const envStr = opts.env || 'dev';
-    process.env.RUTA_LOGS = `logs/${browserStr}-${envStr}-logs-${fecha}.txt`;
+    const { ENV, BROWSER, FEATURE, FOLDER, TAGS } = process.env;
+
+    const contexto =
+        sanitize(FEATURE) ??
+        sanitize(FOLDER) ??
+        sanitize(TAGS?.replace(/@/g, ''));
+
+    const ruta = `logs/${ENV}-${BROWSER}${contexto ? `-${contexto}` : ''}-logs-${fecha}.txt`;
+    process.env.RUTA_LOGS = ruta;
 
     await Logs.crearArchivoLogs(process.env.RUTA_LOGS);
     await Logs.imprimirCabecera();

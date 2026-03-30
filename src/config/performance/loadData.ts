@@ -28,7 +28,7 @@ const Reset = "\x1b[0m";
  */
 export const testData: CaseData = new SharedArray('caseData', () => {
   const file = __ENV.data_file;
-  console.warn(`*****************************La varialbe tiene el valor ${file}`);
+  console.warn(`*****************************La variable tiene el valor ${file}`);
   if (!file) throw new Error(FgRed + `
 
 ❌ Falta definir la variable de entorno data_file.
@@ -44,7 +44,7 @@ export const testData: CaseData = new SharedArray('caseData', () => {
 
      `+ Reset);
   const content = open(`../../test/data/performanceData/${file}.json`);
-  
+
   let parsed;
 
   try {

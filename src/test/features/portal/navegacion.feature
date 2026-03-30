@@ -4,6 +4,6 @@ Feature: Regresion google
     Given Usuario accede a la pagina de google
 
   @google
-  Scenario Outline: Usuario realiza consulta en google
+  Scenario Outline: Usuario realiza consulta en google - "<caso>"
     When El usuario escribe lo que desea buscar en google
     Then El sistema muestra el valor insertado

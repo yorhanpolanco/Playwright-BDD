@@ -6,27 +6,27 @@ let dataFile; // Valor por defecto: 'rba'
 let fecha = dayjs().format('DD-MM-YYYY_HHmmss');
 let defaultDataFile;
 
- function extraerArgumentos() {
+function extraerArgumentos() {
   const args = process.argv.slice(2);
   args.forEach(arg => {
     if (arg.startsWith('data_file=')) {
       dataFile = arg;
       defaultDataFile = dataFile.split('=')[1];
     } else if (arg.startsWith('env=')) {
-      process.env.ENV_FILE = arg.split('=')[1];
+      process.env.ENV = arg.split('=')[1];
     }
   });
-    if (!process.env.ENV_FILE) {
+  if (!process.env.ENV) {
     throw new Error('Debes proveer el argumento env=<entorno>');
   }
 }
 
 function configurarAmbiente() {
-  const envPath = `.env.${process.env.ENV_FILE}`;
+  const envPath = `.env.${process.env.ENV}`;
   process.loadEnvFile(envPath);
 }
 
- async function ejecutar() {
+async function ejecutar() {
   extraerArgumentos();
   configurarAmbiente();
   await logs.imprimirCabecera();

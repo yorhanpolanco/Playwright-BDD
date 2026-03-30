@@ -34,17 +34,17 @@ class Logs {
         const rutaLogs = process.env.RUTA_LOGS;
 
         if (color === true) {
-             console.log(`${ FgGreen}${ linea} ${ Reset}`);
+            console.log(`${FgGreen}${linea} ${Reset}`);
         } else if (color === false) {
-             console.log(`${ FgRed}${ Logs.#obtenerFechaYHoraActual()} ${ linea}${ Reset}`);
+            console.log(`${FgRed}${Logs.#obtenerFechaYHoraActual()} ${linea}${Reset}`);
         } else {
-            linea = `${ Logs.#obtenerFechaYHoraActual()} ${ linea}`;
-            await console.log(`${ linea}`);
+            linea = `${Logs.#obtenerFechaYHoraActual()} ${linea}`;
+            await console.log(`${linea}`);
         }
 
         if (rutaLogs) {
             try {
-                await Logs.#agregarLineaArchivo( rutaLogs,  linea);
+                await Logs.#agregarLineaArchivo(rutaLogs, linea);
             } catch (error) {
                 console.error('Error al escribir en el archivo:', error);
             }
@@ -96,7 +96,7 @@ class Logs {
    */
     static #obtenerParametros() {
         const variables = [];
-        const environment = process.env.ENV_FILE;
+        const environment = process.env.ENV;
         const featureName = process.env.FEATURE;
         const browserName = process.env.BROWSER;
         const folderName = process.env.FOLDER;

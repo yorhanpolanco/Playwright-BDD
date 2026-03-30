@@ -17,7 +17,6 @@ Este es un framework para la automatización de casos de prueba que implementa P
 - Implementación del patrón de diseño POM (Page Object Model).
 - Un archivo para gestionar las variables de entorno (`.env.dev`, `.env.qa`, etc.).
 - Ejecución nativa en paralelo y configuración multiplataforma nativa desde `playwright.config.ts`.
-- Ejecución de pruebas en paralelo
 - Un archivo feature con steps para ejecutar y consultar queries en la BD
 - Un archivo feature con steps para ejecutar los diferentes metodos de la APIs proporcionadas
 - Configuración para ejecutar pruebas de carga baja, media, alta, estres y resistencia solo agregando un archivo de data.
@@ -142,59 +141,51 @@ npm install
 
 Para ejecutar las pruebas en Playwright BDD (que ahora soporta auto-generación de tests desde steps):
 
-1. **Ejecución en todos los navegadores mapeados (Chrome, Firefox, Edge, Safari):**
+1. **Ejecución en un navegador específico:**
+
+Las pruebas de APIs y navegadores específicos o de todos los navegadores a la vez se pueden ejecutar con los siguientes comandos:
+
+1.1 **Ejecución en Microsoft Edge:**
 
 ```bash
-npm run test
+npm run edge folder=<folder> feature=<nombre-feature> tags=@<nombre-tag> env=<prod/qa> workers=<numero>
 ```
 
-2. **Ejecución en un navegador específico:**
+1.2 **Ejecución en Chrome:**
 
 ```bash
-npm run test:chrome
-npm run test:edge
-npm run test:safari
+
+npm run chrome folder=<folder> feature=<nombre-feature> tags=@<nombre-tag> env=<prod/qa> workers=<numero>
 ```
 
-3. **Ejecución abriendo el UI Interactivo de Playwright:**
+1.3 **Ejecución en Safari:**
+
+```bash
+npm run safari folder=<folder> feature=<nombre-feature> tags=@<nombre-tag> env=<prod/qa> workers=<numero>
+```
+
+1.4 **Ejecución en todos los navegadores:**
+
+```bash
+npm run test folder=<folder> feature=<nombre-feature> tags=@<nombre-tag> env=<dev/qa/prod> workers=<numero>
+```
+
+1.5 **Ejecución de APIs:**
+  
+```bash
+npm run api folder=<folder> feature=<nombre-feature> tags=@<nombre-tag> env=<dev/qa/prod> workers=<numero>
+```
+
+> **!NOTA:**
+> Los parámetros como folder, feature, tags y workers no son obligatorios. Sin embargo, si deseas ejecutar algún elemento específico, puedes especificarlo directamente.
+
+2. **Ejecución abriendo el UI Interactivo de Playwright:**
 
 ```bash
 npm run test:ui
 ```
 
-4. **Ejecución filtrando un TAG específico de Cucumber (`@smoke`, `@regression`, etc.):**
-
-```bash
-npm run test -- --grep "@smoke"
-```
-
-5. **Parametrización Avanzada (Ambiente, Folders y Paralelismo):**
-
-`playwright-bdd` hereda las poderosas capacidades CLI de Playwright. Puedes inyectar variables nativamente o usar `cross-env` y utilizar banderas CLI directas:
-
-* **Por Archivo de Ambiente (ENV):**
-```bash
-npx cross-env ENV=qa npm run test:chrome
-```
-
-* **Por Carpeta/Folder o Nombre del feature:**
-```bash
-# Ejecutar un feature o directorio específico
-npm run test:chrome -- src/test/features/portal
-
-# Ejecutar buscando por texto/título
-npm run test:chrome -- --grep "Usuario consulta rnc"
-```
-
-* **Ejecutar Deshabilitando el Paralelismo (Workers):**
-```bash
-npm run test:chrome -- --workers=1
-```
-
-> **!NOTA:**
-> Gracias a la integración de Playwright BDD, la carpeta `.features-gen` es autogenerada dinámicamente. Las pruebas corren de manera paralela nativamente reduciendo drásticamente el tiempo total.
-
-5. **Ejecución de pruebas de performance (k6):**
+3. **Ejecución de pruebas de performance (k6):**
 
 ```bash
 npm run perf -- env=<dev/qa/prod> data_file=<nombre-archivo>

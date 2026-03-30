@@ -1,7 +1,7 @@
 Feature: Ejecucion de Api
 
   @smoke @regression @smokeApi
-  Scenario Outline: Ejecutar api
+  Scenario Outline: Ejecutar api - "<caso>"
     Given Cargar datos del archivo "<jsonFile>" para el caso "<caso>"
     And Ejecutar metodo "<metodo>" en "<url>""<endpoint>" con "<header>", autorizacion "<auth>" y data "<data>"
     Then Mostrar response del api que se ejecuto
