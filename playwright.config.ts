@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import { Utilidades } from './src/utilidades/playwright-utilidades';
 
 // Load environment from ENV variable or default to 'dev'
-const env = process.env.ENV;
+const env = process.env.ENV || 'dev';
 dotenv.config({ path: `.env.${env}` });
 
 /**

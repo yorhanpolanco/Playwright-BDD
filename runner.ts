@@ -28,7 +28,7 @@ async function run() {
     // Inyectar contexto para que playwright.config.ts y otros modulos (como reportes) lo lean
     if (opts.env) { process.env.ENV = opts.env } else { process.env.ENV = 'dev' };
     if (opts.folder) process.env.FOLDER = opts.folder;
-    if (opts.browser) process.env.BROWSER = opts.browser;
+    if (opts.browser) { process.env.BROWSER = opts.browser } else { process.env.BROWSER = 'MultiBrowser' };
     if (opts.tags) process.env.TAGS = opts.tags;
     if (opts.workers) process.env.WORKERS = opts.workers;
     if (opts.feature) process.env.FEATURE = opts.feature;
