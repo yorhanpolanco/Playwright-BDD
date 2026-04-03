@@ -68,7 +68,7 @@ on:
         type: choice
         description: 'Seleccionar data de prueba de performance'
         required: false
-        default: 'rba'
+        default: ''
         options:
           - ''
           - 'rba'
