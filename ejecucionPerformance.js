@@ -1,10 +1,13 @@
 const { execSync } = require('child_process');
 const dayjs = require('dayjs');
 const logs = require('./src/config/logConfig.js');
+const fs = require('fs');
 
 let dataFile; // Valor por defecto: 'rba'
 let fecha = dayjs().format('DD-MM-YYYY_HHmmss');
 let defaultDataFile;
+
+fs.mkdirSync('src/test-result/reports', { recursive: true });
 
 function extraerArgumentos() {
   const args = process.argv.slice(2);
