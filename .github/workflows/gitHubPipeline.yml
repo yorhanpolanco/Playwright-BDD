@@ -56,6 +56,7 @@ on:
         default: 'prod'
         options:
           - ''
+          - 'dev'
           - 'prod'
           - 'qa'
       workers:
@@ -70,6 +71,7 @@ on:
         default: 'rba'
         options:
           - ''
+          - 'rba'
           - 'rba3'
           - 'rba4'
 permissions:
