@@ -7,7 +7,7 @@ let dataFile; // Valor por defecto: 'rba'
 let fecha = dayjs().format('DD-MM-YYYY_HHmmss');
 let defaultDataFile;
 
-fs.mkdirSync('src/test-result/reports', { recursive: true });
+fs.mkdirSync('playwright-report/', { recursive: true });
 
 function extraerArgumentos() {
   const args = process.argv.slice(2);
@@ -35,7 +35,7 @@ async function ejecutar() {
   await logs.imprimirCabecera();
 
   // Construir el comando con cross-env
-  const command = `npx cross-env K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=src/test-result/reports/performance_dashboard_${defaultDataFile}_${fecha}.html k6 run --include-system-env-vars -e ${dataFile} src/test/performance/performanceTest.ts`;
+  const command = `npx cross-env K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=playwright-report/performance_dashboard_${defaultDataFile}_${fecha}.html k6 run --include-system-env-vars -e ${dataFile} src/test/performance/performanceTest.ts`;
 
   // Ejecutar el comando con spawn
   try {
