@@ -112,7 +112,7 @@ jobs:
         name: test-results
         path: |
           playwright-report/**/*.html
-          src/test-result/reports/performance_dashboard_*.html
+          src/test-result/reports/*.html
           logs/*.txt
         retention-days: 30
     - name: Report test results
