@@ -48,7 +48,12 @@ async function run() {
         sanitize(FOLDER) ??
         sanitize(TAGS?.replace(/@/g, ''));
 
-    const ruta = `logs/${ENV}-${BROWSER}${contexto ? `-${contexto}` : ''}-logs-${fecha}.txt`;
+const nombre_report = `${ENV}-${BROWSER}${contexto ? `-${contexto}` : ''}`;
+
+process.env.Report=nombre_report;
+
+    const ruta = `logs/${nombre_report}-logs-${fecha}.txt`;
+
     process.env.RUTA_LOGS = ruta;
 
     await Logs.crearArchivoLogs(process.env.RUTA_LOGS);
