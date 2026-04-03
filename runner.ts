@@ -48,11 +48,11 @@ async function run() {
         sanitize(FOLDER) ??
         sanitize(TAGS?.replace(/@/g, ''));
 
-const nombre_report = `${ENV}-${BROWSER}${contexto ? `-${contexto}` : ''}`;
+    const nombre_report = `${ENV}-${BROWSER}${contexto ? `-${contexto}` : ''}-${fecha}`;
 
-process.env.Report=nombre_report;
+    process.env.Report = nombre_report;
 
-    const ruta = `logs/${nombre_report}-logs-${fecha}.txt`;
+    const ruta = `logs/${nombre_report}-logs.txt`;
 
     process.env.RUTA_LOGS = ruta;
 

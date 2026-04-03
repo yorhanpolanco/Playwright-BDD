@@ -35,7 +35,7 @@ export default defineConfig({
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html', { outputFile:`playwright-report/${process.env.Report}.html`}],
+    ['html', { outputFolder: `playwright-report/${process.env.Report}` }],
     ['junit', { outputFile: 'src/test-result/reports/xml/results.xml' }],
     ['json', { outputFile: 'src/test-result/reports/json/results.json' }],
     ['./src/config/CustomReporter.ts']
