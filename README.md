@@ -1,13 +1,13 @@
 
 # README
 
-## Framework de Playwright con Cucumber y TypeScript
+## Framework de Playwright con BDD y TypeScript
 
 ----
 
 ### Descripción
 
-Este es un framework para la automatización de casos de prueba que implementa Playwright, Cucumber, k6 y TypeScript. Se han agregado varias funcionalidades adicionales, tales como:
+Este es un framework para la automatización de casos de prueba que implementa Playwright, BDD, k6 y TypeScript. Se han agregado varias funcionalidades adicionales, tales como:
 
 - Generación de logs.
 - Posibilidad de utilizar la extensión de Playwright para grabar scripts y reutilizarlos en el framework.
@@ -68,8 +68,7 @@ npm install
 
 ```plaintext
 ├── .vscode/                    # Archivo con sugerencia de extensiones y configuración para las mismas
-├── logs/                       # Archivo de logs
-├── mapeoDeElementos/           # Directorio donde se guardan los script grabados con la extension         
+├── logs/                       # Archivo de logs          
 ├── node_modules/               # Dependencias de npm
 ├── src/                        # Código fuente de las pruebas
 │   ├── config/                 # Directorio de archivos de configuracion
